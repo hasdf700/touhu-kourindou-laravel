@@ -2,24 +2,33 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-    use WithoutModelEvents;
-
     /**
      * Seed the application's database.
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        // 先建立「被參照」的表(沒有外鍵依賴的表)
+        $this->call([
+            CategorySeeder::class,
+            ShopSeeder::class,
+            GameSeeder::class,
+            CitySeeder::class,
+        ]);
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        // 再建立「依賴上面那些表」的表
+        $this->call([
+            CharacterSeeder::class,  // 依賴 games
+            TownSeeder::class,       // 依賴 cities
+            ProductSeeder::class,    // 依賴 shops, categories
+        ]);
+
+        // 最後建立「依賴 products」的表
+        $this->call([
+            ProductImageSeeder::class,
         ]);
     }
 }
