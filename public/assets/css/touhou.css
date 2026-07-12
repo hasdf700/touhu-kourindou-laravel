@@ -1,0 +1,1083 @@
+/* ---- Google Fonts ---- */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;600;700;900&family=Sawarabi+Mincho&family=Shippori+Mincho:wght@400;500;600;700;800&family=Zen+Antique&display=swap');
+
+/* ---- CSS Variables ---- */
+:root {
+    --torii-red: #8B0000;
+    --torii-red-l: #CC0000;
+    --gold: #C9A84C;
+    --gold-light: #F5E6C8;
+    --shrine-dark: #0D0520;
+    --shrine-mid: #150A28;
+    --shrine-deep: #1A0A2E;
+}
+
+/* ---- Fonts ---- */
+.font-jp {
+    font-family: 'Shippori Mincho', 'Noto Serif JP', 'Sawarabi Mincho', serif;
+}
+
+.font-jp-title {
+    font-family: 'Zen Antique', 'Noto Serif JP', serif;
+}
+
+/* 🎯 修正：雙重防禦，html 與 body 一起鎖死，徹底阻斷手機版往右滑動的Bug */
+html,
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: 'Shippori Mincho', 'Noto Serif JP', serif;
+    background: var(--shrine-dark);
+}
+
+/* ---- Keyframes ---- */
+@keyframes sakura-fall {
+    0% {
+        transform: translateY(-10vh) translateX(0px) rotate(0deg);
+        opacity: 1;
+    }
+
+    25% {
+        transform: translateY(25vh) translateX(40px) rotate(90deg);
+        opacity: 0.9;
+    }
+
+    50% {
+        transform: translateY(50vh) translateX(-20px) rotate(180deg);
+        opacity: 0.7;
+    }
+
+    75% {
+        transform: translateY(75vh) translateX(30px) rotate(270deg);
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: translateY(110vh) translateX(10px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@keyframes danmaku-pulse {
+
+    0%,
+    100% {
+        box-shadow: 0 0 4px 2px currentColor, 0 0 8px 4px currentColor;
+    }
+
+    50% {
+        box-shadow: 0 0 8px 4px currentColor, 0 0 20px 8px currentColor;
+    }
+}
+
+@keyframes torii-glow {
+
+    0%,
+    100% {
+        filter: drop-shadow(0 0 8px rgba(200, 50, 50, 0.6)) drop-shadow(0 0 20px rgba(200, 50, 50, 0.3));
+    }
+
+    50% {
+        filter: drop-shadow(0 0 16px rgba(220, 80, 80, 0.9)) drop-shadow(0 0 40px rgba(220, 80, 80, 0.5));
+    }
+}
+
+@keyframes float-up-down {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes float-up-down-scroll {
+
+    0%,
+    100% {
+        transform: translate(-50%, 0px);
+    }
+
+    50% {
+        transform: translate(-50%, -10px);
+    }
+}
+
+@keyframes shimmer-gold {
+    0% {
+        background-position: -200% center;
+    }
+
+    100% {
+        background-position: 200% center;
+    }
+}
+
+@keyframes spellcard-flash {
+    0% {
+        opacity: 0;
+        transform: scale(0.8) rotate(-2deg);
+    }
+
+    40% {
+        opacity: 1;
+        transform: scale(1.05) rotate(1deg);
+    }
+
+    70% {
+        transform: scale(0.98) rotate(-0.5deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+@keyframes twinkle {
+
+    0%,
+    100% {
+        opacity: 0.2;
+        transform: scale(0.8);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.3);
+    }
+}
+
+@keyframes fade-up {
+    0% {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes scale-pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.04);
+    }
+}
+
+@keyframes cart-bounce {
+    0% {
+        transform: scale(1);
+    }
+
+    30% {
+        transform: scale(1.3) rotate(-5deg);
+    }
+
+    60% {
+        transform: scale(0.9) rotate(3deg);
+    }
+
+    100% {
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+/* ---- Scrollbar ---- */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0D0520;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #8B0000, #C9A84C);
+    border-radius: 3px;
+}
+
+::selection {
+    background: rgba(139, 0, 0, 0.4);
+    color: #F5E6C8;
+}
+
+/* ---- Scroll Reveal ---- */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.from-left {
+    transform: translateX(-50px);
+}
+
+.reveal.from-right {
+    transform: translateX(50px);
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translate(0, 0);
+}
+
+/* Cart badge */
+.cart-link {
+    position: relative;
+    color: #F5E6C8 !important;
+}
+
+.cart-badge {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    min-width: 20px;
+    height: 20px;
+    font-size: 10px;
+    background: linear-gradient(135deg, #CC0000, #8B0000);
+    border: 1px solid #C9A84C;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    animation: cart-bounce 0.4s ease-out;
+}
+
+/* Mobile nav overlay */
+#mobile-menu {
+    background: rgba(10, 5, 25, 0.98);
+    border-bottom: 1px solid rgba(201, 168, 76, 0.3);
+    font-family: 'Shippori Mincho', serif;
+    display: none;
+}
+
+#mobile-menu .mobile-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 24px;
+    color: #F5E6C8;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: color 0.2s;
+}
+
+#mobile-menu .mobile-link:hover,
+#mobile-menu .mobile-link.active {
+    color: #C9A84C;
+}
+
+#mobile-menu .mobile-link .link-en {
+    font-size: 11px;
+    opacity: 0.5;
+}
+
+/* ---- 標題神社 SVG ---- */
+.torii-icon {
+    animation: torii-glow 2.5s ease-in-out infinite;
+}
+
+/* ---- Hero ---- */
+.hero-section {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.hero-bg {
+    position: absolute;
+    inset: 0;
+}
+
+.hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.35) saturate(0.8);
+}
+
+.hero-overlay-1 {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(13, 5, 32, 0.5) 0%, rgba(13, 5, 32, 0.2) 40%, rgba(13, 5, 32, 0.7) 80%, rgba(13, 5, 32, 1) 100%);
+}
+
+.hero-overlay-2 {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 40%, rgba(139, 0, 0, 0.15) 0%, transparent 60%);
+}
+
+.hero-title {
+    font-family: 'Zen Antique', serif;
+    font-size: clamp(42px, 8vw, 88px);
+    background: linear-gradient(135deg, #C9A84C 0%, #F5E6C8 40%, #C9A84C 60%, #9B7E3B 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer-gold 4s linear infinite;
+    line-height: 1.1;
+    letter-spacing: 0.05em;
+}
+
+.hero-subtitle {
+    font-family: 'Shippori Mincho', serif;
+    letter-spacing: 0.3em;
+    color: #F5E6C8;
+}
+
+.hero-desc {
+    color: rgba(245, 230, 200, 0.7);
+    font-family: 'Shippori Mincho', serif;
+}
+
+.danmaku-bullet {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: danmaku-pulse 2s ease-in-out infinite;
+    z-index: 3;
+}
+
+.scroll-indicator {
+    position: absolute;
+    left: 50%;
+    bottom: 3rem;
+    transform: translateX(-50%);
+    z-index: 10;
+    color: rgba(245, 230, 200, 0.5);
+    font-family: 'Shippori Mincho', serif;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    animation: float-up-down-scroll 2s ease-in-out infinite;
+    text-align: center;
+}
+
+/* ---- Gold divider ---- */
+.gold-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.gold-divider .line {
+    height: 1px;
+    width: 80px;
+    background: linear-gradient(90deg, transparent, #C9A84C);
+}
+
+.gold-divider .line.right {
+    background: linear-gradient(90deg, #C9A84C, transparent);
+}
+
+.gold-divider .diamond {
+    color: #C9A84C;
+    font-size: 10px;
+}
+
+/* ---- Buttons ---- */
+.btn-torii {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #8B0000, #CC0000);
+    color: #F5E6C8 !important;
+    border: 1px solid rgba(201, 168, 76, 0.4) !important;
+    border-radius: 2px !important;
+    font-family: 'Shippori Mincho', serif;
+    letter-spacing: 0.15em;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-torii::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.4s ease;
+}
+
+.btn-torii:hover::before {
+    transform: translateX(0);
+}
+
+.btn-torii:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(180, 30, 30, 0.5);
+    color: #F5E6C8 !important;
+}
+
+.btn-torii:active {
+    transform: translateY(0);
+}
+
+.btn-torii-outline {
+    background: transparent !important;
+    color: #C9A84C !important;
+    border: 1px solid rgba(201, 168, 76, 0.5) !important;
+    border-radius: 2px !important;
+    font-family: 'Shippori Mincho', serif;
+    letter-spacing: 0.15em;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-torii-outline:hover {
+    background: rgba(201, 168, 76, 0.1) !important;
+    transform: translateY(-2px);
+    color: #C9A84C !important;
+}
+
+/* ---- 段落主標+副標 ---- */
+.section-label {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 11px;
+    letter-spacing: 0.4em;
+    color: #C9A84C;
+}
+
+.section-title {
+    font-family: 'Zen Antique', serif;
+    color: #F5E6C8;
+}
+
+/* 東方作品相關簡介 */
+.anim-float {
+    animation: float-up-down 3s ease-in-out infinite;
+}
+
+.anim-shimmer {
+    background: linear-gradient(90deg, #C9A84C 0%, #F5E6C8 40%, #C9A84C 60%, #9B7E3B 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer-gold 3s linear infinite;
+}
+
+/* ---- Stat Boxes ---- */
+.stat-box {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(201, 168, 76, 0.2);
+    border-radius: 4px;
+    padding: 12px;
+    text-align: center;
+}
+
+.stat-num {
+    font-family: 'Zen Antique', serif;
+    font-size: 18px;
+    color: #C9A84C;
+}
+
+.stat-label {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 11px;
+    color: #F5E6C8;
+    opacity: 0.6;
+}
+
+/* ---- 角色簡介樣式 ---- */
+.char-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(201, 168, 76, 0.3);
+    border-radius: 4px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.3), 0 0 1px rgba(201, 168, 76, 0.4);
+    position: relative;
+}
+
+.char-card:hover {
+    border-color: rgba(201, 168, 76, 0.7);
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2), 0 0 20px rgba(201, 168, 76, 0.3);
+    transform: translateY(-4px);
+}
+
+.char-card .card-top-bar {
+    height: 4px;
+}
+
+.char-card .char-emoji {
+    font-size: 48px;
+    animation: float-up-down 3s ease-in-out infinite;
+}
+
+.char-card .char-emoji:hover {
+    animation: scale-pulse 1s ease-in-out infinite;
+}
+
+.char-card .char-name-jp {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+}
+
+.char-card .char-name-en {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 14px;
+    color: #F5E6C8;
+}
+
+.char-card .char-title {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 11px;
+    opacity: 0.5;
+    color: #F5E6C8;
+}
+
+.char-card .spellcard-badge {
+    background: linear-gradient(135deg, rgba(139, 0, 0, 0.9), rgba(100, 0, 80, 0.9));
+    border: 1px solid rgba(201, 168, 76, 0.5);
+    box-shadow: 0 0 10px rgba(139, 0, 0, 0.5);
+    font-family: 'Noto Serif JP', serif;
+    font-size: 10px;
+    color: #F5E6C8;
+    padding: 4px 8px;
+    border-radius: 2px;
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+}
+
+.char-card-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(201, 168, 76, 0.3), transparent);
+    margin: 10px 0;
+}
+
+.char-hover-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 12px;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.85), transparent);
+    transform: translateY(100%);
+    opacity: 0;
+    transition: all 0.3s ease;
+    text-align: center;
+    font-family: 'Shippori Mincho', serif;
+    font-size: 12px;
+    color: #C9A84C;
+}
+
+.char-card:hover .char-hover-overlay {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* ---- Product Cards ---- */
+.product-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(201, 168, 76, 0.2);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: all 0.35s ease;
+    position: relative;
+}
+
+.product-card:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(201, 168, 76, 0.5);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(201, 168, 76, 0.15);
+}
+
+.product-card .product-img-wrap {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+}
+
+.product-card .product-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s ease;
+}
+
+.product-card:hover .product-img-wrap img {
+    transform: scale(1.1);
+}
+
+.product-card .product-img-wrap .img-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.5) 0%, transparent 50%);
+}
+
+.product-card .product-badge {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    padding: 2px 8px;
+    font-size: 11px;
+    font-family: 'Shippori Mincho', serif;
+    border: 1px solid rgba(201, 168, 76, 0.4);
+    border-radius: 1px;
+    color: #F5E6C8;
+}
+
+.product-card .out-of-stock-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-card .out-of-stock-overlay span {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 12px;
+    color: #F5E6C8;
+    border: 1px solid rgba(245, 230, 200, 0.5);
+    padding: 4px 12px;
+}
+
+.product-card .hover-quickview {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.product-card:hover .hover-quickview {
+    opacity: 1;
+}
+
+.product-card .hover-quickview span {
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(201, 168, 76, 0.5);
+    color: #C9A84C;
+    font-size: 12px;
+    font-family: 'Shippori Mincho', serif;
+    padding: 6px 16px;
+    border-radius: 2px;
+    backdrop-filter: blur(4px);
+}
+
+.product-card .product-info {
+    padding: 14px;
+}
+
+.product-card .product-name-jp {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 10px;
+    color: rgba(201, 168, 76, 0.7);
+}
+
+.product-card .product-name {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 14px;
+    color: #F5E6C8;
+    line-height: 1.3;
+}
+
+.product-card .product-char {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 10px;
+    color: #F5E6C8;
+    opacity: 0.5;
+}
+
+.product-card .product-price {
+    font-family: 'Zen Antique', serif;
+    font-size: 16px;
+    color: #C9A84C;
+}
+
+.product-card .product-orig-price {
+    font-size: 12px;
+    color: #F5E6C8;
+    opacity: 0.4;
+    text-decoration: line-through;
+}
+
+.product-card .product-discount {
+    background: #8B0000;
+    color: #F5E6C8;
+    font-size: 9px;
+    padding: 2px 6px;
+    border-radius: 2px;
+}
+
+.star-icon {
+    color: #C9A84C;
+    font-size: 10px;
+}
+
+.star-empty {
+    color: transparent;
+    -webkit-text-stroke: 1px #C9A84C;
+}
+
+.btn-add-to-cart {
+    width: 100%;
+    padding: 8px;
+    background: linear-gradient(135deg, #8B0000, #CC0000);
+    color: #F5E6C8 !important;
+    border: 1px solid rgba(201, 168, 76, 0.3) !important;
+    border-radius: 2px !important;
+    font-family: 'Shippori Mincho', serif;
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.btn-add-to-cart.added {
+    background: linear-gradient(135deg, #1a6b1a, #2d8b2d);
+}
+
+.btn-add-to-cart:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* ---- Footer ---- */
+#main-footer {
+    background: linear-gradient(180deg, #080418 0%, #0D0520 100%);
+    border-top: 1px solid rgba(201, 168, 76, 0.2);
+    font-family: 'Shippori Mincho', serif;
+}
+
+#main-footer .footer-brand-sub {
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    color: #C9A84C;
+}
+
+#main-footer .footer-brand-main {
+    color: #F5E6C8;
+    font-size: 14px;
+    letter-spacing: 0.1em;
+}
+
+#main-footer .footer-desc {
+    font-size: 14px;
+    color: #F5E6C8;
+    opacity: 0.6;
+    line-height: 1.7;
+}
+
+#main-footer .footer-location {
+    font-size: 12px;
+    color: #C9A84C;
+    opacity: 0.4;
+}
+
+#main-footer h5 {
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    color: #C9A84C;
+}
+
+#main-footer .footer-link {
+    display: block;
+    font-size: 13px;
+    color: #F5E6C8;
+    opacity: 0.6;
+    text-decoration: none;
+    transition: opacity 0.2s;
+    margin-bottom: 8px;
+}
+
+#main-footer .footer-link:hover {
+    opacity: 1;
+    color: #F5E6C8;
+}
+
+#main-footer .news-item {
+    border-left: 2px solid rgba(139, 0, 0, 0.6);
+    padding-left: 10px;
+    margin-bottom: 10px;
+}
+
+#main-footer .news-date {
+    font-size: 11px;
+    color: #C9A84C;
+    opacity: 0.5;
+}
+
+#main-footer .news-text {
+    font-size: 13px;
+    color: #F5E6C8;
+    opacity: 0.6;
+}
+
+#main-footer .footer-copy {
+    font-size: 12px;
+    color: #F5E6C8;
+    opacity: 0.4;
+}
+
+#main-footer hr {
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+/* ---- page_content ---- */
+.page-hero {
+    position: relative;
+    overflow: hidden;
+    padding: 96px 0;
+}
+
+.page-hero .hero-bg {
+    position: absolute;
+    inset: 0;
+}
+
+.page-hero .hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.2) saturate(0.6);
+}
+
+.page-hero .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(13, 5, 32, 0.6) 0%, rgba(13, 5, 32, 0.95) 100%);
+}
+
+.page-hero .hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.page-title {
+    font-family: 'Zen Antique', serif;
+    font-size: clamp(28px, 5vw, 52px);
+    color: #F5E6C8;
+}
+
+/* ---- Filter / Search Toolbar ---- */
+.shop-toolbar {
+    background: rgba(13, 5, 32, 0.97);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+}
+
+.filter-btn {
+    padding: 6px 14px;
+    font-family: 'Shippori Mincho', serif;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    background: rgba(255, 255, 255, 0.05);
+    color: rgba(245, 230, 200, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+    background: linear-gradient(135deg, #8B0000, #CC0000);
+    color: #F5E6C8;
+    border-color: rgba(201, 168, 76, 0.5);
+}
+
+.search-box {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 2px !important;
+    color: #F5E6C8 !important;
+    font-family: 'Shippori Mincho', serif;
+}
+
+.search-box::placeholder {
+    color: rgba(245, 230, 200, 0.4);
+}
+
+.search-box:focus {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border-color: rgba(201, 168, 76, 0.4) !important;
+    box-shadow: none !important;
+    color: #F5E6C8 !important;
+}
+
+.sort-select {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 2px !important;
+    color: rgba(245, 230, 200, 0.8) !important;
+    font-family: 'Shippori Mincho', serif;
+    font-size: 12px;
+}
+
+.sort-select option {
+    background: #150A28;
+}
+
+.feature-icon {
+    font-size: 40px;
+    animation: float-up-down 3s ease-in-out infinite;
+}
+
+/* 項目優化滾動條 */
+#modal-product-info::-webkit-scrollbar {
+    width: 4px;
+}
+
+#modal-product-info::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+#modal-product-info::-webkit-scrollbar-thumb {
+    background: rgba(255, 110, 145, 0.2);
+    border-radius: 2px;
+}
+
+#modal-product-info::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 110, 145, 0.4);
+}
+
+.shop-badge-link:hover {
+    background: rgba(201, 168, 76, 0.25) !important;
+    border-color: rgba(201, 168, 76, 0.8) !important;
+    color: #ffffff !important;
+    box-shadow: 0 0 12px rgba(201, 168, 76, 0.4);
+}
+
+.btn-cyber-modal-cart {
+    background: linear-gradient(135deg, #BF5B75 0%, #9E435A 100%) !important;
+    color: #ffffff !important;
+    font-weight: 600;
+    letter-spacing: 1px;
+    font-size: 14px;
+    border: 1px solid rgba(255, 110, 145, 0.2) !important;
+    border-radius: 4px;
+    padding: 10px 20px;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+.btn-cyber-modal-cart:hover {
+    background: linear-gradient(135deg, #DE7A95 0%, #BF5B75 100%) !important;
+    color: #0d0520 !important;
+    border-color: #FFB7C5 !important;
+    box-shadow: 0 0 15px rgba(255, 110, 145, 0.35);
+    font-weight: 700;
+}
+
+.btn-cyber-modal-cart:active {
+    transform: scale(0.98);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* 🎯 修正：替數量選擇器外殼加上強力的 Flexbox 彈性排版，強迫按鈕與輸入框保持在同一橫行，絕不准斷行重疊 */
+.cyber-qty-group {
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 110, 145, 0.2);
+    border-radius: 4px;
+    padding: 2px;
+    overflow: hidden;
+    display: inline-flex !important;
+    /* 強制變彈性盒模型 */
+    align-items: center;
+    /* 垂直置中 */
+    justify-content: center;
+}
+
+/* 🎯 修正：確保加減按鈕本身樣式整齊且不跑版 */
+.cyber-qty-group button,
+.cyber-qty-group .btn {
+    background: transparent;
+    border: none;
+    color: #F5E6C8;
+    padding: 0 10px;
+    height: 32px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cyber-qty-group button:hover {
+    background: rgba(255, 110, 145, 0.1);
+}
+
+/* 數量中間的數字輸入框 */
+.cyber-qty-group .qty-input {
+    background: rgba(13, 5, 32, 0.6);
+    border: none;
+    color: #F5E6C8;
+    width: 45px;
+    height: 32px;
+    text-align: center;
+    font-size: 14px;
+    font-family: 'Consolas', monospace;
+    font-weight: 600;
+}
+
+.cyber-qty-group .qty-input::-webkit-outer-spin-button,
+.cyber-qty-group .qty-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.cyber-qty-group .qty-input[type=number] {
+    -moz-appearance: textfield;
+}
+
+span.error-tips,
+span.error-tips::before {
+    font-family: "Font Awesome 5 Free";
+    color: red;
+    font-weight: 900;
+    content: "\f06a";
+}
+
+span.valid-tips,
+span.valid-tips::before {
+    font-family: "Font Awesome 5 Free";
+    color: greenyellow;
+    font-weight: 900;
+    content: "\f00c";
+}
+
+.form-control::placeholder {
+    color: rgba(255, 255, 255, 0.4) !important;
+}
+
+.form-control::-webkit-input-placeholder {
+    color: rgba(255, 255, 255, 0.4) !important;
+}
+
+.form-control::-moz-placeholder {
+    color: rgba(255, 255, 255, 0.4) !important;
+}
+
+.form-control:-ms-input-placeholder {
+    color: rgba(255, 255, 255, 0.4) !important;
+}
