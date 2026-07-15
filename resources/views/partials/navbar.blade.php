@@ -6,7 +6,7 @@
 
         <div class="d-flex gap-3">
             <a href="{{ route('home') }}" class="nav-link text-white">首頁</a>
-            <a href="#" class="nav-link text-white">商店</a>
+            <a href="{{ route('shop.index') }}" class="nav-link text-white">商店</a>
             <a href="{{ route('characters.index') }}" class="nav-link text-white">角色介紹</a>
             <a href="#" class="nav-link text-white">會員</a>
             <a href="#" class="nav-link text-white">購物車</a>

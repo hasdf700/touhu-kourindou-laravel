@@ -5,29 +5,6 @@
 @extends('layouts.app')
 @section('title', '角色介紹-幻想商鋪：香霖堂')
 @section('content')
-    <style>
-        .pagination .page-link {
-            background-color: #1A0A2E;
-            border-color: #C9A84C40;
-            color: #F5E6C8;
-        }
-
-        .pagination .page-item.active .page-link {
-            background-color: #C9A84C;
-            border-color: #C9A84C;
-            color: #0D0520;
-        }
-
-        .pagination .page-link:hover {
-            background-color: #2A1550;
-            color: #F5E6C8;
-        }
-
-        /* 隱藏分頁元件自帶的「Showing X to Y of Z results」文字 */
-        .small {
-            display: none;
-        }
-    </style>
     <section class="py-5" style="background:#0D0520; min-height:80vh;">
         <div class="container-xl">
 
