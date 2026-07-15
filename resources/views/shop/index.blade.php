@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', '首頁 - 幻想商鋪：香霖堂')
+@section('title', '商店 - 幻想商鋪：香霖堂')
 
 @section('content')
     <section class="py-5" style="background:#0D0520; min-height:80vh;">
