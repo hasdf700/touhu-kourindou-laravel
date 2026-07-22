@@ -8,7 +8,14 @@
             <a href="{{ route('home') }}" class="nav-link text-white">首頁</a>
             <a href="{{ route('shop.index') }}" class="nav-link text-white">商店</a>
             <a href="{{ route('characters.index') }}" class="nav-link text-white">角色介紹</a>
-            <a href="#" class="nav-link text-white">會員</a>
+
+            @auth
+                <a href="{{ route('dashboard') }}" class="nav-link text-white">會員中心</a>
+            @else
+                <a href="{{ route('login') }}" class="nav-link text-white">登入</a>
+                <a href="{{ route('register') }}" class="nav-link text-white">註冊</a>
+            @endauth
+            
             <a href="#" class="nav-link text-white">購物車</a>
         </div>
     </div>
